@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Birthday 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --pink: #ff6b9d;
+  --pink2: #ff3d7f;
+  --pink3: #ffb3cc;
+  --dark: #060410;
+  --dark2: #0a0518;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--dark);
+  color: #fff;
+  font-family: 'Share Tech Mono', monospace;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  user-select: none;
+}
+
+/* ═══════════════════════════════
+   BACKGROUND
+═══════════════════════════════ */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(255,61,127,.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 20%, rgba(255,107,157,.09) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 50%, rgba(40,5,60,.4) 0%, #060410 80%);
+}
+.dots-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+.dots-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,.13) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ═══════════════════════════════
+   SHOOTING STARS CANVAS
+═══════════════════════════════ */
+#starsCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════
+   SCENES
+═══════════════════════════════ */
+.scene {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .7s ease;
+}
+.scene.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ═══════════════════════════════
+   SCENE 1 — TERMINAL RAIN
+═══════════════════════════════ */
+#scene-terminal { flex-direction: column; overflow: hidden; }
+
+.terminal-rain { position: absolute; inset: 0; overflow: hidden; }
+.rain-col {
+  position: absolute;
+  top: -60px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  animation: rainFall linear infinite;
+}
+.rain-char {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--pink);
+  text-shadow: 0 0 8px var(--pink2);
+  white-space: nowrap;
+}
+.rain-char.bright {
+  color: #fff;
+  text-shadow: 0 0 12px var(--pink), 0 0 24px var(--pink2);
+}
+@keyframes rainFall {
+  from { transform: translateY(0); }
+  to   { transform: translateY(110vh); }
+}
+
+/* ═══════════════════════════════
+   SCENE 2 — COUNTDOWN
+═══════════════════════════════ */
+#scene-countdown { flex-direction: column; align-items: center; justify-content: center; }
+.countdown-num {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(160px, 30vw, 260px);
+  font-weight: 700;
+  color: transparent;
+  background: linear-gradient(135deg, var(--pink3), var(--pink), var(--pink2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 0 40px rgba(255,61,127,.6));
+  animation: countPulse .8s ease-out forwards;
+  display: none;
+}
+.countdown-num.show { display: block; }
+@keyframes countPulse {
+  0%   { transform: scale(2); opacity: 0; }
+  50%  { transform: scale(.9); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.countdown-label {
+  font-family: 'Share Tech Mono';
+  font-size: .9rem;
+  color: rgba(255,179,204,.5);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+/* ═══════════════════════════════
+   SCENE 3 — HBD TITLE
+═══════════════════════════════ */
+#scene-hbd { flex-direction: column; text-align: center; gap: 12px; }
+.hbd-line1 {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(1rem, 3.5vw, 1.8rem);
+  color: rgba(255,179,204,.6);
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  animation: slideUp .7s ease forwards;
+}
+.hbd-name {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 700;
+  color: transparent;
+  background: linear-gradient(135deg, #fff 0%, var(--pink3) 40%, var(--pink) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 0 30px rgba(255,107,157,.5));
+  animation: slideUp .7s .2s ease both;
+  line-height: 1.1;
+}
+.hbd-sub {
+  font-family: 'Share Tech Mono';
+  font-size: .85rem;
+  color: rgba(255,107,157,.5);
+  letter-spacing: 4px;
+  animation: slideUp .7s .4s ease both;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════
+   SCENE 4 — LOVE BUTTON
+═══════════════════════════════ */
+#scene-love { flex-direction: column; gap: 32px; }
+.love-bg-hearts { position: absolute; inset: 0; overflow: hidden; }
+.float-heart {
+  position: absolute;
+  font-size: 1.4rem;
+  animation: floatUp linear infinite;
+  opacity: .25;
+}
+@keyframes floatUp {
+  from { transform: translateY(110vh) rotate(0deg); opacity: .3; }
+  to   { transform: translateY(-10vh) rotate(20deg); opacity: 0; }
+}
+.love-prompt {
+  font-family: 'Share Tech Mono';
+  font-size: .85rem;
+  color: rgba(255,179,204,.6);
+  letter-spacing: 4px;
+  text-align: center;
+  animation: blink 1.5s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+.love-btn {
+  width: 140px; height: 140px;
+  border: none; background: none; cursor: pointer;
+  position: relative; z-index: 2;
+  animation: heartbeat 1.2s ease-in-out infinite;
+  transition: transform .1s ease;
+}
+.love-btn:active { transform: scale(.88); }
+.love-btn svg { width: 100%; height: 100%; filter: drop-shadow(0 0 20px rgba(255,61,127,.7)); }
+@keyframes heartbeat {
+  0%,100%{ transform: scale(1); }
+  15%{ transform: scale(1.15); }
+  30%{ transform: scale(1); }
+  45%{ transform: scale(1.08); }
+}
+
+/* ═══════════════════════════════
+   SCENE 5 — PHOTO ORBIT  (LARGER)
+═══════════════════════════════ */
+#scene-photos { flex-direction: column; overflow: hidden; }
+.orbit-container {
+  position: relative;
+  width: min(480px, 94vw);
+  height: min(480px, 94vw);
+}
+.orbit-ring {
+  position: absolute;
+  inset: 0;
+  animation: spinOrbit 12s linear infinite;
+}
+.orbit-heart {
+  position: absolute;
+  font-size: 1.1rem;
+  top: 50%; left: 50%;
+  filter: drop-shadow(0 0 6px var(--pink));
+}
+@keyframes spinOrbit { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+.center-photo {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: min(300px, 60vw);
+  height: min(300px, 60vw);
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  border: 2px solid rgba(255,107,157,.5);
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(255,61,127,.35), 0 0 100px rgba(255,61,127,.12);
+}
+
+/* Photo crossfade wrapper */
+.photo-fade-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.photo-slot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity .6s ease;
+}
+.photo-slot img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.photo-slot .photo-placeholder-inner {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #1a0a14, #2d0f25);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 8px;
+}
+.photo-slot .photo-placeholder-inner span { font-size: 3rem; }
+.photo-slot .photo-placeholder-inner p { font-size: .7rem; color: rgba(255,179,204,.4); letter-spacing: 2px; }
+.photo-slot.hidden { opacity: 0; pointer-events: none; }
+.photo-slot.visible { opacity: 1; }
+
+.photo-btn-next {
+  margin-top: 24px;
+  font-family: 'Share Tech Mono';
+  font-size: .8rem;
+  letter-spacing: 4px;
+  color: rgba(255,179,204,.5);
+  background: none;
+  border: 1px solid rgba(255,107,157,.3);
+  padding: 10px 28px;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all .3s ease;
+  z-index: 2;
+}
+.photo-btn-next:hover {
+  color: var(--pink3);
+  border-color: var(--pink);
+  box-shadow: 0 0 20px rgba(255,107,157,.2);
+}
+
+/* ═══════════════════════════════
+   SCENE 6 — ALBUM BOOK  (LARGER)
+═══════════════════════════════ */
+#scene-album { flex-direction: column; gap: 18px; overflow: hidden; }
+.album-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  font-weight: 700;
+  color: transparent;
+  background: linear-gradient(135deg, #fff, var(--pink3), var(--pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-align: center;
+  letter-spacing: 2px;
+  filter: drop-shadow(0 0 16px rgba(255,107,157,.4));
+  animation: slideUp .6s ease forwards;
+}
+.album-wrapper {
+  position: relative;
+  width: min(360px, 92vw);
+  height: min(460px, 72vh);
+}
+.album-page {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  border: 1.5px solid rgba(255,107,157,.35);
+  overflow: hidden;
+  background: #100818;
+  box-shadow: 0 8px 40px rgba(0,0,0,.5), 0 0 40px rgba(255,61,127,.08);
+  transition: transform .65s cubic-bezier(.77,0,.18,1), opacity .65s ease;
+}
+
+/* Album page photo — crossfade support via img */
+.album-page .img-wrap {
+  position: relative;
+  width: 100%;
+  height: 75%;
+  overflow: hidden;
+}
+.album-page .img-wrap img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity .5s ease;
+}
+.album-page .img-wrap .photo-placeholder-inner {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #1a0a14, #2d0f25);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 8px;
+}
+.album-page .img-wrap .photo-placeholder-inner span { font-size: 3rem; }
+.album-page .img-wrap .photo-placeholder-inner p { font-size: .7rem; color: rgba(255,179,204,.4); letter-spacing: 2px; }
+
+.album-page .page-caption {
+  padding: 14px 20px;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.album-page .page-num {
+  font-family: 'Share Tech Mono';
+  font-size: .7rem;
+  color: rgba(255,107,157,.4);
+  letter-spacing: 3px;
+  margin-bottom: 4px;
+}
+.album-page .page-caption-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.15rem;
+  color: rgba(255,179,204,.85);
+}
+.album-page[data-page="0"] { z-index: 5; }
+.album-page[data-page="1"] { z-index: 4; transform: translateX(6px) translateY(-4px) rotate(.5deg); }
+.album-page[data-page="2"] { z-index: 3; transform: translateX(10px) translateY(-8px) rotate(1deg); }
+.album-page[data-page="3"] { z-index: 2; transform: translateX(14px) translateY(-12px) rotate(1.5deg); }
+.album-page[data-page="4"] { z-index: 1; transform: translateX(18px) translateY(-16px) rotate(2deg); }
+
+.album-page.flip-out {
+  transform: translateX(-110%) rotate(-8deg) !important;
+  opacity: 0;
+  z-index: 10;
+}
+.album-controls { display: flex; align-items: center; gap: 20px; z-index: 2; }
+.album-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: rgba(255,107,157,.25);
+  transition: all .3s ease;
+  cursor: pointer;
+}
+.album-dot.active {
+  background: var(--pink);
+  box-shadow: 0 0 8px var(--pink);
+  transform: scale(1.4);
+}
+.album-swipe-hint {
+  font-family: 'Share Tech Mono';
+  font-size: .7rem;
+  color: rgba(255,179,204,.3);
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+/* ═══════════════════════════════
+   SCENE 7 — ENDING HEART MOSAIC
+═══════════════════════════════ */
+#scene-ending {
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Heart mosaic container */
+.heart-mosaic {
+  position: relative;
+  width: min(360px, 92vw);
+  height: min(320px, 50vh);
+}
+
+/* Each photo tile in the heart */
+.heart-tile {
+  position: absolute;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid rgba(255,107,157,.6);
+  box-shadow: 0 0 14px rgba(255,61,127,.35), 0 2px 8px rgba(0,0,0,.5);
+  background: #1a0a14;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.heart-tile img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity .7s ease;
+}
+.heart-tile .ph {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, #1a0a14, #2d0f25);
+}
+/* Slide-in animation per tile */
+@keyframes tileAppear {
+  from { opacity: 0; transform: scale(.5) rotate(-10deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+.heart-tile.animate-in {
+  animation: tileAppear .45s cubic-bezier(.34,1.56,.64,1) forwards;
+}
+
+/* Glow ring around heart */
+.heart-glow {
+  position: absolute;
+  inset: -10px;
+  background: radial-gradient(ellipse at center, rgba(255,61,127,.12) 0%, transparent 70%);
+  pointer-events: none;
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+.ending-msg {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 700;
+  color: transparent;
+  background: linear-gradient(135deg, #fff, var(--pink3), var(--pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-align: center;
+  filter: drop-shadow(0 0 20px rgba(255,107,157,.5));
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+@keyframes pulseGlow {
+  0%,100%{ filter: drop-shadow(0 0 20px rgba(255,107,157,.5)); }
+  50%{ filter: drop-shadow(0 0 40px rgba(255,107,157,.9)); }
+}
+.ending-sub {
+  font-family: 'Share Tech Mono';
+  font-size: .75rem;
+  color: rgba(255,107,157,.4);
+  letter-spacing: 4px;
+  text-align: center;
+  margin-top: 2px;
+}
+/* floating hearts for ending */
+.ending-hearts-overlay { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 6; }
+.ending-float-heart { position: absolute; font-size: 1rem; animation: floatUp linear infinite; }
+
+/* GLOBAL HEARTS */
+.global-hearts {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 5; overflow: hidden;
+}
+</style>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+<div class="dots-bg"></div>
+<canvas id="starsCanvas"></canvas>
+<div class="global-hearts" id="globalHearts"></div>
+
+<!-- ══ SCENE 1 ══ -->
+<div class="scene active" id="scene-terminal">
+  <div class="terminal-rain" id="terminalRain"></div>
+</div>
+
+<!-- ══ SCENE 2 ══ -->
+<div class="scene" id="scene-countdown">
+  <div class="countdown-num show" id="countNum">1</div>
+  <div class="countdown-label" id="countLabel">loading...</div>
+</div>
+
+<!-- ══ SCENE 3 ══ -->
+<div class="scene" id="scene-hbd">
+  <div class="hbd-line1">✦ happy birthday ✦</div>
+  <div class="hbd-name" id="birthdayName">Sayang</div>
+  <div class="hbd-sub">with all my love 💕</div>
+</div>
+
+<!-- ══ SCENE 4 ══ -->
+<div class="scene" id="scene-love">
+  <div class="love-bg-hearts" id="loveBgHearts"></div>
+  <div class="love-prompt">// tap the heart to continue</div>
+  <button class="love-btn" onclick="goToPhotos()" aria-label="Open">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="hg" cx="50%" cy="40%">
+          <stop offset="0%" stop-color="#ff8fb0"/>
+          <stop offset="100%" stop-color="#ff1a5c"/>
+        </radialGradient>
+      </defs>
+      <path d="M50 88 C50 88 10 60 10 35 C10 20 22 10 35 10 C42 10 48 14 50 18 C52 14 58 10 65 10 C78 10 90 20 90 35 C90 60 50 88 50 88Z" fill="url(#hg)"/>
+    </svg>
+  </button>
+</div>
+
+<!-- ══ SCENE 5 ══ -->
+<div class="scene" id="scene-photos">
+  <div class="orbit-container">
+    <div class="orbit-ring" id="orbitRing"></div>
+    <div class="center-photo" id="centerPhoto">
+      <div class="photo-fade-wrap" id="photoFadeWrap">
+        <div class="photo-slot visible" id="slotA">
+          <div class="photo-placeholder-inner"><span>📸</span><p>photo 1</p></div>
+        </div>
+        <div class="photo-slot hidden" id="slotB">
+          <div class="photo-placeholder-inner"><span>📸</span><p>photo 2</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="photo-btn-next" onclick="nextOrbitPhoto()" id="orbitNextBtn">next ›</button>
+</div>
+
+<!-- ══ SCENE 6 ══ -->
+<div class="scene" id="scene-album">
+  <div class="album-title">Happy Birthday Sayang 💕</div>
+  <div class="album-wrapper" id="albumWrapper"></div>
+  <div class="album-controls" id="albumDots"></div>
+  <div class="album-swipe-hint">← swipe atau tap untuk buka foto →</div>
+</div>
+
+<!-- ══ SCENE 7: ENDING HEART MOSAIC ══ -->
+<div class="scene" id="scene-ending">
+  <div class="heart-mosaic" id="heartMosaic">
+    <div class="heart-glow"></div>
+  </div>
+  <div class="ending-msg">I love you always 💕</div>
+  <div class="ending-sub">∞ happy birthday ∞</div>
+  <div class="ending-hearts-overlay" id="endingHeartsOverlay"></div>
+</div>
+
+<script>
+// ═══════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════
+const CONFIG = {
+  name: "Alfvyyy",
+  photos: [
+    "photo1.jpg",
+    "photo2.jpg",
+    "photo3.jpg",
+    "photo4.jpg",
+    "photo5.jpg",
+  ],
+  captions: [
+    "Selamat bertambah usia sayang 💕",
+    "Wish u all the best ✨",
+    "Sehat terus yaaa 🌸",
+    "Kamu luar biasa 💫",
+    "Loveeee youuuu 💖",
+  ]
+};
+
+// ═══════════════════════════════════════
+// SHOOTING STARS
+// ═══════════════════════════════════════
+(function initStars() {
+  const canvas = document.getElementById('starsCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Static tiny stars
+  const staticStars = Array.from({length: 160}, () => ({
+    x: Math.random(),
+    y: Math.random(),
+    r: Math.random() * 1.2 + 0.2,
+    a: Math.random() * .7 + .2,
+    twinkleSpeed: Math.random() * .02 + .005,
+    twinkleOffset: Math.random() * Math.PI * 2
+  }));
+
+  // Shooting stars pool
+  const shooters = [];
+  function spawnShooter() {
+    shooters.push({
+      x: Math.random() * W * 1.2,
+      y: Math.random() * H * .5,
+      len: 80 + Math.random() * 140,
+      speed: 8 + Math.random() * 12,
+      angle: Math.PI / 4 + (Math.random() - .5) * .3,
+      alpha: 1,
+      life: 0,
+      maxLife: 40 + Math.random() * 30,
+      width: .6 + Math.random() * 1.2,
+      color: Math.random() > .5 ? '#ffb3cc' : '#ff6b9d'
+    });
+  }
+
+  // Spawn first batch
+  for (let i = 0; i < 3; i++) {
+    setTimeout(spawnShooter, i * 900);
+  }
+  // Keep spawning
+  setInterval(() => {
+    if (shooters.length < 6) spawnShooter();
+  }, 800);
+
+  let t = 0;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    t++;
+
+    // Draw static stars
+    staticStars.forEach(s => {
+      const twinkle = Math.sin(t * s.twinkleSpeed + s.twinkleOffset) * .3 + .7;
+      ctx.beginPath();
+      ctx.arc(s.x * W, s.y * H, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${s.a * twinkle})`;
+      ctx.fill();
+    });
+
+    // Draw shooting stars
+    for (let i = shooters.length - 1; i >= 0; i--) {
+      const s = shooters[i];
+      s.life++;
+      s.x += Math.cos(s.angle) * s.speed;
+      s.y += Math.sin(s.angle) * s.speed;
+      const progress = s.life / s.maxLife;
+      s.alpha = progress < .2
+        ? progress / .2
+        : progress > .7
+          ? 1 - (progress - .7) / .3
+          : 1;
+
+      const tailX = s.x - Math.cos(s.angle) * s.len;
+      const tailY = s.y - Math.sin(s.angle) * s.len;
+
+      const grad = ctx.createLinearGradient(tailX, tailY, s.x, s.y);
+      grad.addColorStop(0, `rgba(255,255,255,0)`);
+      grad.addColorStop(0.6, `rgba(255,200,220,${s.alpha * .4})`);
+      grad.addColorStop(1, `rgba(255,107,157,${s.alpha})`);
+
+      ctx.beginPath();
+      ctx.moveTo(tailX, tailY);
+      ctx.lineTo(s.x, s.y);
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = s.width;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+
+      // Bright head glow
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.width * 1.8, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,180,210,${s.alpha * .9})`;
+      ctx.fill();
+
+      if (s.life >= s.maxLife) shooters.splice(i, 1);
+    }
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ═══════════════════════════════════════
+// SCENE MANAGER
+// ═══════════════════════════════════════
+let currentScene = 'scene-terminal';
+function goTo(id) {
+  document.getElementById(currentScene).classList.remove('active');
+  document.getElementById(id).classList.add('active');
+  currentScene = id;
+}
+
+// ═══════════════════════════════════════
+// SCENE 1 — TERMINAL RAIN
+// ═══════════════════════════════════════
+const HBD_TEXT = "HAPPY BIRTHDAY ";
+const rainContainer = document.getElementById('terminalRain');
+function buildRain() {
+  const cols = Math.floor(window.innerWidth / 16);
+  for (let c = 0; c < cols; c++) {
+    const col = document.createElement('div');
+    col.className = 'rain-col';
+    col.style.left = (c * 16) + 'px';
+    const duration = 2.5 + Math.random() * 4;
+    col.style.animationDuration = duration + 's';
+    col.style.animationDelay = (-Math.random() * duration) + 's';
+    const rows = 20 + Math.floor(Math.random() * 15);
+    for (let r = 0; r < rows; r++) {
+      const ch = document.createElement('div');
+      ch.className = 'rain-char' + (r === 0 ? ' bright' : '');
+      ch.textContent = HBD_TEXT[(c + r) % HBD_TEXT.length];
+      col.appendChild(ch);
+    }
+    rainContainer.appendChild(col);
+  }
+}
+buildRain();
+setTimeout(startCountdown, 3000);
+
+// ═══════════════════════════════════════
+// SCENE 2 — COUNTDOWN
+// ═══════════════════════════════════════
+function startCountdown() {
+  goTo('scene-countdown');
+  document.getElementById('birthdayName').textContent = CONFIG.name;
+  const numEl = document.getElementById('countNum');
+  const labelEl = document.getElementById('countLabel');
+  function showNum(val, lbl) {
+    numEl.classList.remove('show');
+    void numEl.offsetWidth;
+    numEl.textContent = val;
+    labelEl.textContent = lbl;
+    numEl.classList.add('show');
+  }
+  showNum('1', '');
+  setTimeout(() => showNum('2', ''), 1100);
+  setTimeout(() => showNum('3', ''), 2200);
+  setTimeout(() => showNum('🎉', 'happy birthday!'), 3300);
+  setTimeout(() => goTo('scene-hbd'), 4200);
+  setTimeout(() => { goTo('scene-love'); buildLoveBg(); }, 6500);
+}
+
+// ═══════════════════════════════════════
+// SCENE 4 — LOVE BG
+// ═══════════════════════════════════════
+function buildLoveBg() {
+  const el = document.getElementById('loveBgHearts');
+  for (let i = 0; i < 30; i++) {
+    const h = document.createElement('div');
+    h.className = 'float-heart';
+    h.textContent = '💕';
+    h.style.left = Math.random() * 100 + '%';
+    h.style.animationDuration = (5 + Math.random() * 8) + 's';
+    h.style.animationDelay = (-Math.random() * 8) + 's';
+    h.style.fontSize = (.8 + Math.random() * 1.4) + 'rem';
+    el.appendChild(h);
+  }
+}
+
+// ═══════════════════════════════════════
+// SCENE 5 — PHOTO ORBIT with crossfade
+// ═══════════════════════════════════════
+let orbitIndex = 0;
+let activeSlot = 'A'; // 'A' or 'B'
+
+function buildOrbitHearts() {
+  const ring = document.getElementById('orbitRing');
+  const count = 12;
+  const radius = 48; // % of container
+  for (let i = 0; i < count; i++) {
+    const angleDeg = (i / count) * 360;
+    const angleRad = (angleDeg * Math.PI) / 180;
+    const h = document.createElement('div');
+    h.className = 'orbit-heart';
+    // Position on the ring — radius as % of container half-width
+    h.style.top = `calc(50% + ${Math.sin(angleRad) * radius}%)`;
+    h.style.left = `calc(50% + ${Math.cos(angleRad) * radius}%)`;
+    h.style.transform = 'translate(-50%, -50%)';
+    h.style.fontSize = (.7 + Math.random() * .5) + 'rem';
+    h.textContent = ['💕','💗','💖','💓'][i % 4];
+    ring.appendChild(h);
+  }
+}
+buildOrbitHearts();
+
+function setSlotContent(slotEl, src, idx) {
+  if (src) {
+    slotEl.innerHTML = `<img src="${src}" alt="photo ${idx+1}" onerror="this.style.display='none'"/>`;
+  } else {
+    slotEl.innerHTML = `<div class="photo-placeholder-inner"><span>📸</span><p>photo ${idx+1}</p></div>`;
+  }
+}
+
+function goToPhotos() {
+  orbitIndex = 0;
+  const slotA = document.getElementById('slotA');
+  const slotB = document.getElementById('slotB');
+  activeSlot = 'A';
+  setSlotContent(slotA, CONFIG.photos[0], 0);
+  slotA.classList.remove('hidden'); slotA.classList.add('visible');
+  slotB.classList.remove('visible'); slotB.classList.add('hidden');
+  goTo('scene-photos');
+}
+
+function nextOrbitPhoto() {
+  orbitIndex++;
+  if (orbitIndex >= CONFIG.photos.length) {
+    buildAlbum();
+    goTo('scene-album');
+    return;
+  }
+
+  // Crossfade to next photo
+  const slotA = document.getElementById('slotA');
+  const slotB = document.getElementById('slotB');
+  const nextSlotId = activeSlot === 'A' ? 'slotB' : 'slotA';
+  const nextSlot = document.getElementById(nextSlotId);
+  const currentSlot = activeSlot === 'A' ? slotA : slotB;
+
+  setSlotContent(nextSlot, CONFIG.photos[orbitIndex], orbitIndex);
+  nextSlot.classList.remove('hidden'); nextSlot.classList.add('visible');
+  // Small delay then hide current
+  setTimeout(() => {
+    currentSlot.classList.remove('visible'); currentSlot.classList.add('hidden');
+  }, 100);
+
+  activeSlot = activeSlot === 'A' ? 'B' : 'A';
+
+  document.getElementById('orbitNextBtn').textContent =
+    orbitIndex === CONFIG.photos.length - 1 ? 'open album ›' : 'next ›';
+}
+
+// ═══════════════════════════════════════
+// SCENE 6 — ALBUM
+// ═══════════════════════════════════════
+let albumCurrent = 0;
+const albumTotal = CONFIG.photos.length;
+
+function buildAlbum() {
+  const wrapper = document.getElementById('albumWrapper');
+  wrapper.innerHTML = '';
+  const dotsEl = document.getElementById('albumDots');
+  dotsEl.innerHTML = '';
+  albumCurrent = 0;
+
+  for (let i = albumTotal - 1; i >= 0; i--) {
+    const page = document.createElement('div');
+    page.className = 'album-page';
+    page.dataset.page = i;
+    page.style.zIndex = albumTotal - i;
+    if (i > 0) page.style.transform = `translateX(${i*4}px) translateY(${i*-4}px) rotate(${i*.5}deg)`;
+
+    const src = CONFIG.photos[i];
+    page.innerHTML = `
+      <div class="img-wrap">
+        ${src
+          ? `<img src="${src}" alt="photo ${i+1}" onerror="this.style.opacity=0;this.nextSibling.style.display='flex'"/>
+             <div class="photo-placeholder-inner" style="display:none"><span>📸</span><p>photo ${i+1}</p></div>`
+          : `<div class="photo-placeholder-inner"><span>📸</span><p>photo ${i+1}</p></div>`
+        }
+      </div>
+      <div class="page-caption">
+        <div class="page-num">0${i+1} / 0${albumTotal}</div>
+        <div class="page-caption-text">${CONFIG.captions[i] || ''}</div>
+      </div>`;
+
+    page.addEventListener('click', flipAlbum);
+    wrapper.appendChild(page);
+
+    const dot = document.createElement('div');
+    dot.className = 'album-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => jumpAlbum(i));
+    dotsEl.appendChild(dot);
+  }
+
+  let tx = 0;
+  wrapper.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
+  wrapper.addEventListener('touchend', e => {
+    if (tx - e.changedTouches[0].clientX > 40) flipAlbum();
+    else if (e.changedTouches[0].clientX - tx > 40) prevAlbum();
+  }, {passive:true});
+}
+
+function flipAlbum() {
+  const active = document.querySelector(`.album-page[data-page="${albumCurrent}"]`);
+  const dots = document.querySelectorAll('.album-dot');
+  if (!active) return;
+  active.classList.add('flip-out');
+  dots[albumCurrent]?.classList.remove('active');
+  albumCurrent++;
+  if (albumCurrent >= albumTotal) {
+    setTimeout(buildEnding, 700);
+    return;
+  }
+  dots[albumCurrent]?.classList.add('active');
+  document.querySelectorAll('.album-page').forEach(p => {
+    const pi = parseInt(p.dataset.page);
+    if (pi >= albumCurrent) {
+      p.style.zIndex = albumTotal - (pi - albumCurrent);
+      p.style.transform = pi === albumCurrent ? '' : `translateX(${(pi-albumCurrent)*4}px) translateY(${(pi-albumCurrent)*-4}px) rotate(${(pi-albumCurrent)*.5}deg)`;
+    }
+  });
+}
+
+function prevAlbum() {
+  if (albumCurrent <= 0) return;
+  const dots = document.querySelectorAll('.album-dot');
+  dots[albumCurrent]?.classList.remove('active');
+  albumCurrent--;
+  dots[albumCurrent]?.classList.add('active');
+  const flipped = document.querySelector(`.album-page[data-page="${albumCurrent}"]`);
+  if (flipped) flipped.classList.remove('flip-out');
+}
+
+function jumpAlbum(idx) {
+  albumCurrent = idx;
+  document.querySelectorAll('.album-page').forEach(p => {
+    const pi = parseInt(p.dataset.page);
+    p.classList.remove('flip-out');
+    if (pi < idx) p.classList.add('flip-out');
+    else {
+      p.style.zIndex = albumTotal - (pi - idx);
+      p.style.transform = pi === idx ? '' : `translateX(${(pi-idx)*4}px) translateY(${(pi-idx)*-4}px) rotate(${(pi-idx)*.5}deg)`;
+    }
+  });
+  document.querySelectorAll('.album-dot').forEach((d,i) => d.classList.toggle('active', i === idx));
+}
+
+// ═══════════════════════════════════════
+// SCENE 7 — HEART MOSAIC SLIDESHOW
+// ═══════════════════════════════════════
+
+// Heart shape pixel grid (1 = tile, 0 = empty) — 7 cols x 6 rows
+const HEART_GRID = [
+  [0,1,1,0,1,1,0],
+  [1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1],
+  [0,1,1,1,1,1,0],
+  [0,0,1,1,1,0,0],
+  [0,0,0,1,0,0,0],
+];
+
+function buildEnding() {
+  goTo('scene-ending');
+  const mosaic = document.getElementById('heartMosaic');
+  // Clear old tiles (keep glow)
+  mosaic.querySelectorAll('.heart-tile').forEach(t => t.remove());
+
+  const COLS = 7, ROWS = 6;
+  const containerW = mosaic.offsetWidth || Math.min(360, window.innerWidth * 0.92);
+  const containerH = mosaic.offsetHeight || Math.min(340, window.innerHeight * 0.52);
+  const tileW = Math.floor(containerW / COLS) - 4;
+  const tileH = Math.floor(containerH / ROWS) - 4;
+  const gap = 4;
+
+  // Collect heart tile positions
+  const positions = [];
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      if (HEART_GRID[r][c]) {
+        positions.push({
+          x: c * (tileW + gap) + (containerW - COLS*(tileW+gap))/2,
+          y: r * (tileH + gap) + (containerH - ROWS*(tileH+gap))/2,
+          w: tileW, h: tileH
+        });
+      }
+    }
+  }
+
+  // Create tile elements, all with photo[0] initially
+  const tiles = positions.map((pos, idx) => {
+    const tile = document.createElement('div');
+    tile.className = 'heart-tile';
+    tile.style.left = pos.x + 'px';
+    tile.style.top  = pos.y + 'px';
+    tile.style.width  = pos.w + 'px';
+    tile.style.height = pos.h + 'px';
+    tile.style.opacity = '0';
+
+    const src = CONFIG.photos[idx % CONFIG.photos.length];
+    tile.innerHTML = src
+      ? `<img src="${src}" onerror="this.style.display='none'"/>`
+      : `<div class="ph">💕</div>`;
+
+    mosaic.appendChild(tile);
+    // Staggered appear animation
+    setTimeout(() => {
+      tile.style.opacity = '1';
+      tile.classList.add('animate-in');
+    }, 80 + idx * 60);
+
+    return { el: tile, pos };
+  });
+
+  // Auto slideshow — cycle photos across tiles
+  let slidePhotoIdx = 0;
+  const totalPhotos = CONFIG.photos.length;
+
+  function cycleSlide() {
+    slidePhotoIdx = (slidePhotoIdx + 1) % totalPhotos;
+    // Pick random subset of tiles to update (wave effect)
+    const shuffled = [...tiles].sort(() => Math.random() - .5);
+    shuffled.forEach((t, i) => {
+      setTimeout(() => {
+        const src = CONFIG.photos[(slidePhotoIdx + i) % totalPhotos];
+        const img = t.el.querySelector('img');
+        if (img && src) {
+          img.style.opacity = '0';
+          setTimeout(() => {
+            img.src = src;
+            img.style.opacity = '1';
+          }, 350);
+        }
+      }, i * 40);
+    });
+  }
+
+  // Start cycling after tiles appear
+  const slideInterval = setInterval(cycleSlide, 2800);
+  // Store interval so it can be cleared if needed
+  mosaic._slideInterval = slideInterval;
+
+  spawnEndingHearts();
+}
+
+function spawnEndingHearts() {
+  const overlay = document.getElementById('endingHeartsOverlay');
+  if (!overlay) return;
+  overlay.innerHTML = '';
+  const emojis = ['💕','💗','💖','✨','🌸'];
+  for (let j = 0; j < 18; j++) {
+    const h = document.createElement('div');
+    h.className = 'ending-float-heart';
+    h.textContent = emojis[j % emojis.length];
+    h.style.left = Math.random() * 95 + '%';
+    h.style.animationDuration = (4 + Math.random() * 5) + 's';
+    h.style.animationDelay = (-Math.random() * 5) + 's';
+    h.style.fontSize = (.6 + Math.random() * .9) + 'rem';
+    h.style.opacity = '.3';
+    overlay.appendChild(h);
+  }
+}
+
+// GLOBAL HEARTS
+const gHearts = document.getElementById('globalHearts');
+for (let i = 0; i < 10; i++) {
+  const h = document.createElement('div');
+  h.style.cssText = `position:absolute;font-size:.7rem;left:${Math.random()*100}%;
+    animation:floatUp ${6+Math.random()*6}s linear infinite;
+    animation-delay:${-Math.random()*10}s;opacity:.15`;
+  h.textContent = '💕';
+  gHearts.appendChild(h);
+}
+</script>
+</body>
+</html>
