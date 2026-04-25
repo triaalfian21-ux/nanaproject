@@ -173,6 +173,19 @@ body {
   letter-spacing: 4px;
   animation: slideUp .7s .4s ease both;
 }
+.hbd-from {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  font-weight: 500;
+  color: transparent;
+  background: linear-gradient(135deg, var(--pink3), var(--pink2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  letter-spacing: 2px;
+  filter: drop-shadow(0 0 14px rgba(255,61,127,.4));
+  animation: slideUp .7s .6s ease both;
+  margin-top: 4px;
+}
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(40px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -501,10 +514,25 @@ body {
   position: fixed; inset: 0;
   pointer-events: none; z-index: 5; overflow: hidden;
 }
+
+/* WATERMARK */
+.watermark {
+  position: fixed;
+  bottom: 18px;
+  width: 100%;
+  text-align: center;
+  z-index: 999;
+  pointer-events: none;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1rem;
+  color: rgba(255, 179, 204, 0.35);
+  letter-spacing: 3px;
+}
 </style>
 </head>
 <body>
 
+<div class="watermark">from nana comel🌸</div>
 <div class="bg-layer"></div>
 <div class="dots-bg"></div>
 <canvas id="starsCanvas"></canvas>
@@ -526,6 +554,7 @@ body {
   <div class="hbd-line1">✦ happy birthday ✦</div>
   <div class="hbd-name" id="birthdayName">Sayang</div>
   <div class="hbd-sub">with all my love 💕</div>
+  <div class="hbd-from">— from nana comel 🌸</div>
 </div>
 
 <!-- ══ SCENE 4 ══ -->
